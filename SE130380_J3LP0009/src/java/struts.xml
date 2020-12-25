@@ -1,0 +1,73 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: Peter -->
+ 
+<struts>
+    <!-- Add your configuration elements here -->
+    <package name="default" extends="struts-default">
+        <action name="HomeAction" class="khangtl.actions.HomeAction">
+            <result name="home" type="redirect">home.jsp</result>
+        </action>
+        <action name="LoginAction" class="khangtl.actions.LoginAction">
+            <result name="home" type="chain">HomeAction</result>
+            <result name="error">login.jsp</result>
+            <result name="verify">verify_account.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+        <action name="LogoutAction" class="khangtl.actions.LogoutAction">
+            <result name="success" type="redirect">login.jsp</result>
+        </action>
+        <action name="RegisterAction" class="khangtl.actions.RegisterAction">
+            <result name="success">verify_account.jsp</result>
+            <result name="error">register.jsp</result>
+            <result name="input">register.jsp</result>
+        </action>
+        <action name="VerifyAction" class="khangtl.actions.VerifyAction">
+            <result name="success">login.jsp</result>
+            <result name="error">verify_account.jsp</result>
+        </action>
+        <action name="SearchResourceAction" class="khangtl.actions.SearchResourceAction">
+            <result name="search">home.jsp</result>
+        </action>
+        <action name="AddToRequestListAction" class="khangtl.actions.AddToRequestListAction">
+            <result name="none" type="redirect">request_list.jsp</result>
+        </action>
+        <action name="UpdateRequestListAction" class="khangtl.actions.UpdateRequestListAction">
+            <result name="none" type="redirect">request_list.jsp</result>
+        </action>
+        <action name="SendRequestAction" class="khangtl.actions.SendRequestAction">
+            <result name="success">home.jsp</result>
+            <result name="error">request_list.jsp</result>
+            <result name="invalid">request_list.jsp</result>
+        </action>
+        <action name="ShowRequestAction" class="khangtl.actions.ShowRequestAction">
+            <result name="request_list_manager">request_list_manager.jsp</result>
+        </action>
+        <action name="SearchRequestAction" class="khangtl.actions.SearchRequestAction">
+            <result name="success">request_list_manager.jsp</result>
+        </action>
+        <action name="SearchHistoryRequestAction" class="khangtl.actions.SearchHistoryRequestAction">
+            <result name="success">history_request.jsp</result>
+        </action>
+        <action name="DeleteRequestAction" class="khangtl.actions.DeleteRequestAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">SearchHistoryRequestAction</param>
+                <param name="searchRequestDate">${searchRequestDate}</param>
+            </result>
+        </action>
+        <action name="DeleteResourceRequestAction" class="khangtl.actions.DeleteResourceRequestAction">
+            <result name="success" type="redirect">request_list.jsp</result>
+        </action>
+        <action name="HandleRequestAction" class="khangtl.actions.HandleRequestAction">
+            <result name="success" type="redirectAction">
+                <param name="actionName">SearchRequestAction</param>
+                <param name="searchRequestDate">${searchRequestDate}</param>
+                <param name="searchUser">${searchUser}</param>
+                <param name="searchResourceName">${searchResourceName}</param>
+                <param name="searchStatus">${searchStatus}</param>
+            </result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARlocking="true" path="/SE130380_J3LP0008">
+    <Resource 
+        factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+        name="DreamTraveling"
+        auth="Container"
+        type="javax.sql.DataSource"
+        maxActive="100"
+        maxIdle="30"
+        maxWait="10000"
+        driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+        url="jdbc:sqlserver://localhost:1433;databaseName=DreamTraveling;characterEncoding=UTF-8"
+        username="sa"
+        password=""
+    />
+</Context>
